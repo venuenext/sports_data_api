@@ -61,11 +61,22 @@ module SportsDataApi
       return Games.new(response.xpath('league/daily-schedule'))
     end
 
+    def self.play_by_play(game, version = DEFAULT_VERSION)
+      response_json(version, "/games/#{game}/pbp.json")
+    end
+
     private
     def self.response_xml(version, url)
+      Nokogiri::XML(response_generic(version, url).to_s).remove_namespaces!
+    end
+
+    def self.response_json(version, url)
+      JSON.parse(response_generic(version, url).to_s)
+    end
+
+    def self.response_generic(version, url)
       base_url = BASE_URL % { access_level: SportsDataApi.access_level(SPORT), version: version }
-      response = SportsDataApi.generic_request("#{base_url}#{url}", SPORT)
-      Nokogiri::XML(response.to_s).remove_namespaces!
+      SportsDataApi.generic_request("#{base_url}#{url}", SPORT)
     end
   end
 end
