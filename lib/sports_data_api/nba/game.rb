@@ -53,9 +53,8 @@ module SportsDataApi
 
       ##
       # Wrapper for Nba.boxscore
-      # TODO
       def boxscore
-        raise NotImplementedError
+        Nba.boxscore(@id)
       end
     end
   end
