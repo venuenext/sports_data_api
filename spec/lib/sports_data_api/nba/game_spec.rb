@@ -47,9 +47,7 @@ describe SportsDataApi::Nba::Game, vcr: {
     its(:venue) { should be_an_instance_of(SportsDataApi::Nba::Venue) }
     its(:broadcast) { should be_an_instance_of(SportsDataApi::Nba::Broadcast) }
     its(:summary) { should be_an_instance_of(SportsDataApi::Nba::Game) }
-    it '#boxscore' do
-      expect { subject.boxscore }.to raise_error(NotImplementedError)
-    end
+    its(:boxscore) { should be_an_instance_of(Hash) }
     it '#pbp' do
       expect { subject.pbp }.to raise_error(NotImplementedError)
     end
@@ -83,9 +81,7 @@ describe SportsDataApi::Nba::Game, vcr: {
     its(:venue) { should be_an_instance_of(SportsDataApi::Nba::Venue) }
     its(:broadcast) { should be_an_instance_of(SportsDataApi::Nba::Broadcast) }
     its(:summary) { should be_an_instance_of(SportsDataApi::Nba::Game) }
-    it '#boxscore' do
-      expect { subject.boxscore }.to raise_error(NotImplementedError)
-    end
+    its(:boxscore) { should be_an_instance_of(Hash) }
     it '#pbp' do
       expect { subject.pbp }.to raise_error(NotImplementedError)
     end
@@ -119,9 +115,7 @@ describe SportsDataApi::Nba::Game, vcr: {
     its(:venue) { should be_an_instance_of(SportsDataApi::Nba::Venue) }
     its(:broadcast) { should be_an_instance_of(SportsDataApi::Nba::Broadcast) }
     its(:summary) { should be_an_instance_of(SportsDataApi::Nba::Game) }
-    it '#boxscore' do
-      expect { subject.boxscore }.to raise_error(NotImplementedError)
-    end
+    its(:boxscore) { should be_an_instance_of(Hash) }
     it '#pbp' do
       expect { subject.pbp }.to raise_error(NotImplementedError)
     end

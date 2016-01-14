@@ -65,6 +65,10 @@ module SportsDataApi
       response_json(version, "/games/#{game}/pbp.json")
     end
 
+    def self.boxscore(game, version = DEFAULT_VERSION)
+      response_json(version, "/games/#{game}/boxscore.json")
+    end
+
     private
     def self.response_xml(version, url)
       Nokogiri::XML(response_generic(version, url).to_s).remove_namespaces!
