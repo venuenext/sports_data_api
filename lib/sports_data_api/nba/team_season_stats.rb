@@ -1,5 +1,3 @@
-require 'byebug'
-require 'looksee'
 module SportsDataApi
   module Nba
     class TeamSeasonStats
