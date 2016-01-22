@@ -7,13 +7,14 @@ module SportsDataApi
                   :averages
 
       def initialize(json)
-        @season_id = json['season']['id']
-        @season_year = json['season']['year'].to_i
-        @season_type = json['season']['type'].to_sym
-        @team_id = json['id']
+        @team_id = json.fetch('id', nil)
 
-        @totals = json['own_record']['total']
-        @averages = json['own_record']['average']
+        @season_id = json.fetch('season', {}).fetch('id', nil)
+        @season_year = json.fetch('season', {}).fetch('year', nil)
+        @season_type = json.fetch('season', {}).fetch('type', 'nil').to_sym
+
+        @totals = json.fetch('own_record', {}).fetch('total', nil)
+        @averages = json.fetch('own_record', {}).fetch('average', nil)
       end
     end
   end
