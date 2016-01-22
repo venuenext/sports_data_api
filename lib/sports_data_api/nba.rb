@@ -40,16 +40,16 @@ module SportsDataApi
 
     ##
     # Fetch NBA team season stats for a given team, season and season type
-    # def self.team_season_stats(team, season, season_type, version = DEFAULT_VERSION)
-    #   response = self.response_json(version, "/teams/#{team}/#{season}/#{season_type}/statistics.json")
-
-    #   return TeamSeasonStats.new(response)
-    # end
     def self.team_season_stats(team, season, season_type, version = DEFAULT_VERSION)
-      response = self.response_xml(version, "/seasontd/#{season}/#{season_type}/teams/#{team}/statistics.xml")
+      response = self.response_json(version, "/seasontd/#{season}/#{season_type}/teams/#{team}/statistics.json")
 
-      return TeamSeasonStats.new(response.xpath("season"))
+      return TeamSeasonStats.new(response)
     end
+    # def self.team_season_stats(team, season, season_type, version = DEFAULT_VERSION)
+    #   response = self.response_xml(version, "/seasontd/#{season}/#{season_type}/teams/#{team}/statistics.xml")
+
+    #   return TeamSeasonStats.new(response.xpath("season"))
+    # end
 
     ##
     # Fetches NBA game summary for a given game
