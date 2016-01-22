@@ -1,7 +1,7 @@
 module SportsDataApi
   module Nba
     class Team
-      attr_reader :season_id, :name, :market, :alias, :conference, :division,
+      attr_reader :id, :name, :market, :alias, :conference, :division,
                   :stats, :players, :points
 
       def initialize(xml, conference = nil, division = nil)
