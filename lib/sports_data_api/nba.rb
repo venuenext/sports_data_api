@@ -12,6 +12,7 @@ module SportsDataApi
     autoload :Team, File.join(DIR, 'team')
     autoload :Teams, File.join(DIR, 'teams')
     autoload :Player, File.join(DIR, 'player')
+    autoload :TeamSeasonStats, File.join(DIR, 'team_season_stats')
     autoload :Game, File.join(DIR, 'game')
     autoload :Games, File.join(DIR, 'games')
     autoload :Season, File.join(DIR, 'season')
@@ -35,6 +36,19 @@ module SportsDataApi
       response = self.response_xml(version, "/teams/#{team}/profile.xml")
 
       return Team.new(response.xpath("team"))
+    end
+
+    ##
+    # Fetch NBA team season stats for a given team, season and season type
+    # def self.team_season_stats(team, season, season_type, version = DEFAULT_VERSION)
+    #   response = self.response_json(version, "/teams/#{team}/#{season}/#{season_type}/statistics.json")
+
+    #   return TeamSeasonStats.new(response)
+    # end
+    def self.team_season_stats(team, season, season_type, version = DEFAULT_VERSION)
+      response = self.response_xml(version, "/seasontd/#{season}/#{season_type}/teams/#{team}/statistics.xml")
+
+      return TeamSeasonStats.new(response.xpath("season"))
     end
 
     ##
