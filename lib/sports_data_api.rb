@@ -50,6 +50,7 @@ module SportsDataApi
   autoload :Nfl,         File.join(LIBRARY_PATH, 'nfl')
   autoload :Ncaafb,      File.join(LIBRARY_PATH, 'ncaafb')
   autoload :Nba,         File.join(LIBRARY_PATH, 'nba')
+  autoload :NbaImages,   File.join(LIBRARY_PATH, 'nba_images')
   autoload :Mlb,         File.join(LIBRARY_PATH, 'mlb')
   autoload :Nhl,         File.join(LIBRARY_PATH, 'nhl')
   autoload :Ncaamb,      File.join(LIBRARY_PATH, 'ncaamb')
