@@ -1,3 +1,4 @@
+require 'byebug'
 require 'simplecov'
 require 'pry'
 require 'codeclimate-test-reporter'
