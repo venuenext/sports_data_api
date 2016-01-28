@@ -4,19 +4,19 @@ module SportsDataApi
     class Exception < ::Exception
     end
 
-    DIR = File.join(File.dirname(__FILE__), 'nba')
+    SPORT = :nba_images
+    DIR = File.join(File.dirname(__FILE__), SPORT.to_s)
     BASE_URL = 'https://api.sportradar.us/nba-images-%{access_level}%{version}'
     DEFAULT_VERSION = 2
-    SPORT = :nba_images
+
+    autoload :Asset, File.join(DIR, 'asset')
+    autoload :HeadshotsAssets, File.join(DIR, 'headshots_assets')
 
     ##
-    # Fetches manifests for NBA player headshots
-    def self.headshots_manifests(version = DEFAULT_VERSION)
+    # Fetches image URLs for NBA player headshots
+    def self.headshots_assets(version = DEFAULT_VERSION)
       response = self.response_xml(version, "/usat/players/headshots/manifests/all_assets.xml")
-
-      #return Games.new(response.xpath('league/daily-schedule'))
-
-      #return Teams.new(response.xpath('/league'))
+      return HeadshotsAssets.new(response.xpath('/'))
     end
 
     private
